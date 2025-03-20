@@ -1,0 +1,117 @@
+name: sql_common_project
+description: ''
+version: 0.0.1
+author: nimbus+demo@prophecy.io
+language: sql
+buildSystem: ''
+buildSystemDetails: null
+pipelines: {}
+datasets: {}
+templates: {}
+jobs: {}
+gemContainer:
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems: {}
+  dependencies: null
+functions:
+  author: null
+  createdAt: '2025-03-20 18:49:03'
+  udfs: {}
+  udafs: {}
+  expressions: {}
+  airflowFunctions: {}
+  businessRules: {}
+subgraphs: {}
+sqlModels:
+  .prophecy/metadata/sqlmodels/aggregate_orders:
+    name: aggregate_orders
+    schema:
+      entityType: ''
+      providerType: Databricks
+      fields:
+      - name: o_totalprice
+        dataType:
+          type: Decimal
+    description: null
+    author: nimbus+demo@prophecy.io
+    files:
+    - models/aggregate_orders.sql
+    - .prophecy/ide/models/aggregate_orders.json
+    - models/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
+    createdAt: '2025-03-20 18:50:10'
+sqlSnapshots: {}
+sqlTests: {}
+sqlMacros:
+  .prophecy/metadata/sqlmacros/generate_schema_name:
+    name: generate_schema_name
+    macroType: expression
+    description: null
+    author: nimbus+demo@prophecy.io
+    files:
+    - macros/generate_schema_name.sql
+    - .prophecy/ide/macros/generate_schema_name.json
+    createdAt: '2025-03-20 18:49:05'
+sqlSeeds: {}
+sqlSources:
+  .prophecy/metadata/sqlsources/samples_tpch:
+    name: samples.tpch
+    description: null
+    author: nimbus+demo@prophecy.io
+    files:
+    - prophecy-sources/sources.yml
+    createdAt: '2025-03-20 18:50:13'
+    tables:
+    - name: orders
+      schema:
+        entityType: ''
+        providerType: databricks
+        fields:
+        - name: o_orderkey
+          dataType:
+            type: Bigint
+        - name: o_custkey
+          dataType:
+            type: Bigint
+        - name: o_orderstatus
+          dataType:
+            type: String
+        - name: o_totalprice
+          dataType:
+            type: Decimal
+        - name: o_orderdate
+          dataType:
+            type: Date
+        - name: o_orderpriority
+          dataType:
+            type: String
+        - name: o_clerk
+          dataType:
+            type: String
+        - name: o_shippriority
+          dataType:
+            type: Integer
+        - name: o_comment
+          dataType:
+            type: String
+      description: Customer order records detailing order status, priority, and total
+        price, supporting insights into sales performance and customer behavior.
+      author: nimbus+demo@prophecy.io
+      createdAt: '2025-03-20 18:50:13'
+sqlUnreferencedSources: {}
+sqlPipeline:
+  name: sqlPipeline
+  description: null
+  author: nimbus+demo@prophecy.io
+  createdAt: '2025-03-20 18:49:03'
+dependencies: []
+projectDependencies: {}
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
+pipelineConfigurations: {}

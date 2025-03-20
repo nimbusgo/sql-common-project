@@ -1,0 +1,9 @@
+---
+version: 2
+models:
+- name: "aggregate_orders"
+  columns:
+  - name: "o_totalprice"
+    dataType:
+      type: "Decimal"
+  tests: []

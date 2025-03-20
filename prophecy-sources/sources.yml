@@ -1,0 +1,51 @@
+---
+version: 2
+sources:
+- name: "samples.tpch"
+  database: "samples"
+  schema: "tpch"
+  config:
+    enabled: true
+  tables:
+  - name: "orders"
+    description: "Customer order records detailing order status, priority, and total\
+      \ price, supporting insights into sales performance and customer behavior."
+    quoting:
+      identifier: true
+    columns:
+    - name: "o_orderkey"
+      description: "Unique identifier for each order"
+      dataType:
+        type: "Bigint"
+    - name: "o_custkey"
+      description: "The unique identifier for the customer who placed the order"
+      dataType:
+        type: "Bigint"
+    - name: "o_orderstatus"
+      description: "Current status of the order"
+      dataType:
+        type: "String"
+    - name: "o_totalprice"
+      description: "Total price of the order"
+      dataType:
+        type: "Decimal"
+    - name: "o_orderdate"
+      description: "Date when the order was placed"
+      dataType:
+        type: "Date"
+    - name: "o_orderpriority"
+      description: "Priority level assigned to the order"
+      dataType:
+        type: "String"
+    - name: "o_clerk"
+      description: "The clerk responsible for processing the order"
+      dataType:
+        type: "String"
+    - name: "o_shippriority"
+      description: "Priority level assigned to the order for shipping"
+      dataType:
+        type: "Integer"
+    - name: "o_comment"
+      description: "Comments or notes related to the order"
+      dataType:
+        type: "String"

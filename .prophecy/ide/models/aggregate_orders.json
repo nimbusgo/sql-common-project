@@ -1,0 +1,141 @@
+{
+  "id" : "aggregate_orders",
+  "metainfo" : {
+    "label" : "aggregate_orders",
+    "autoLayout" : false,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "entityConfig" : {
+        "materialized" : "ephemeral",
+        "type" : "ModelConfig"
+      },
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    },
+    "version" : 3
+  },
+  "processes" : {
+    "aggregate_orders##zkP7Bhbf" : {
+      "id" : "aggregate_orders##zkP7Bhbf",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "aggregate_orders",
+        "x" : 0,
+        "y" : -20,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM Aggregate_1\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "DTFCRJCD",
+          "slug" : "Aggregate_1"
+        } ],
+        "outputs" : [ {
+          "id" : "WkOeeAKl",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "uz7KkbUKujaETeTIt51Yo" : {
+      "id" : "uz7KkbUKujaETeTIt51Yo",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "orders",
+        "slug" : "orders",
+        "x" : -620,
+        "y" : 0,
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "orders",
+          "sourceType" : "Source",
+          "sourceName" : "samples.tpch",
+          "alias" : "",
+          "additionalProperties" : null
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "VZylRP2Vnjx0rzeea7PUe",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH" : {
+      "id" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "Aggregate_1",
+        "slug" : "Aggregate_1",
+        "x" : -340,
+        "y" : 0,
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "Calculates the total revenue generated from all orders.",
+        "autoUpdateComment" : true
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "sum(o_totalprice)"
+          },
+          "alias" : "o_totalprice",
+          "_row_id" : "343437499"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B##o_totalprice" ],
+        "groupBy" : [ ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "w8UXSlL6v9S8DESw4IXgo$$N860-o8noF1Jxzt6NGjBY",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "2L4N80NP3_Jd9O6Hy9stE$$qMumvVXUtymSF93sEbAVt",
+    "source" : "uz7KkbUKujaETeTIt51Yo",
+    "sourcePort" : "VZylRP2Vnjx0rzeea7PUe",
+    "target" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
+    "targetPort" : "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B"
+  }, {
+    "id" : "VO85UIZ34FTuOiVR-N8Gz",
+    "source" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
+    "sourcePort" : "w8UXSlL6v9S8DESw4IXgo$$N860-o8noF1Jxzt6NGjBY",
+    "target" : "aggregate_orders##zkP7Bhbf",
+    "targetPort" : "DTFCRJCD"
+  } ],
+  "component" : "Model"
+}

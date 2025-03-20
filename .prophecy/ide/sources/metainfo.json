@@ -1,0 +1,418 @@
+{
+  "name" : "sql_common_project",
+  "fileSystem" : {
+    "type" : "Folder",
+    "name" : "",
+    "children" : { },
+    "path" : "",
+    "editable" : true
+  },
+  "providerType" : "databricks",
+  "prophecyIDEFolder" : {
+    "name" : "",
+    "children" : { },
+    "path" : "",
+    "editable" : true
+  },
+  "externalSources" : {
+    "type" : "Project",
+    "name" : "",
+    "children" : [ {
+      "type" : "Catalog",
+      "name" : "hive_metastore",
+      "children" : [ ]
+    }, {
+      "type" : "Catalog",
+      "name" : "main",
+      "children" : [ ]
+    }, {
+      "type" : "Catalog",
+      "name" : "pipelinehub",
+      "children" : [ ]
+    }, {
+      "type" : "Catalog",
+      "name" : "samples",
+      "children" : [ {
+        "type" : "Schema",
+        "name" : "accuweather",
+        "children" : [ ]
+      }, {
+        "type" : "Schema",
+        "name" : "bakehouse",
+        "children" : [ ]
+      }, {
+        "type" : "Schema",
+        "name" : "information_schema",
+        "children" : [ ]
+      }, {
+        "type" : "Schema",
+        "name" : "nyctaxi",
+        "children" : [ ]
+      }, {
+        "type" : "Schema",
+        "name" : "tpch",
+        "tables" : {
+          "lineitem" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "l_orderkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "l_partkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "l_suppkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "l_linenumber",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "l_quantity",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "l_extendedprice",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "l_discount",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "l_tax",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "l_returnflag",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "l_linestatus",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "l_shipdate",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "l_commitdate",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "l_receiptdate",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "l_shipinstruct",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "l_shipmode",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "l_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "nation" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "n_nationkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "n_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "n_regionkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "n_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "supplier" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "s_suppkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "s_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "s_address",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "s_nationkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "s_phone",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "s_acctbal",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "s_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "customer" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "c_custkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "c_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "c_address",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "c_nationkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "c_phone",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "c_acctbal",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "c_mktsegment",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "c_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "orders" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "o_orderkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "o_custkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "o_orderstatus",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "o_totalprice",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "o_orderdate",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "o_orderpriority",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "o_clerk",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "o_shippriority",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "o_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "region" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "r_regionkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "r_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "r_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "part" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "p_partkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "p_name",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "p_mfgr",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "p_brand",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "p_type",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "p_size",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "p_container",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "p_retailprice",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "p_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "partsupp" : {
+            "entityType" : "TABLE",
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "ps_partkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "ps_suppkey",
+              "dataType" : {
+                "type" : "Bigint"
+              }
+            }, {
+              "name" : "ps_availqty",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "ps_supplycost",
+              "dataType" : {
+                "type" : "Decimal"
+              }
+            }, {
+              "name" : "ps_comment",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          }
+        }
+      } ]
+    }, {
+      "type" : "Catalog",
+      "name" : "system",
+      "children" : [ ]
+    }, {
+      "type" : "Catalog",
+      "name" : "trading",
+      "children" : [ ]
+    } ]
+  },
+  "dependenciesContainer" : {
+    "dependencies" : { },
+    "prophecyProjectDependencies" : { }
+  },
+  "entitiesToSync" : [ ],
+  "frontEndLanguage" : "sql"
+}
