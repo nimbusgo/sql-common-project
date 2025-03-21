@@ -24,3 +24,14 @@ model-paths:
 macro-paths:
 - "macros"
 target-path: "target"
+
+# ==================
+# Variable Configs
+# ==================
+vars:
+  param_a: "abc"
+
+# ============
+# Misc
+# ============
+dispatch: []

@@ -13,7 +13,9 @@
         "type" : "ModelConfig"
       },
       "userDefinedConfig" : {
-        "vars" : { }
+        "vars" : {
+          "param_a" : "\"def\""
+        }
       }
     },
     "version" : 3
@@ -24,8 +26,8 @@
       "component" : "TargetModel",
       "metadata" : {
         "label" : "aggregate_orders",
-        "x" : 0,
-        "y" : -20,
+        "x" : 200,
+        "y" : -40,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
@@ -33,7 +35,7 @@
         "customQueryDisabled" : true,
         "customQuery" : false,
         "incrementalEditorDisabled" : true,
-        "query" : "SELECT * \n\nFROM Aggregate_1\n",
+        "query" : "SELECT * \n\nFROM aggregate_total_price\n",
         "incrementalKey" : false,
         "incremental" : {
           "expression" : "true"
@@ -42,7 +44,7 @@
       "ports" : {
         "inputs" : [ {
           "id" : "DTFCRJCD",
-          "slug" : "Aggregate_1"
+          "slug" : "aggregate_total_price"
         } ],
         "outputs" : [ {
           "id" : "WkOeeAKl",
@@ -58,8 +60,8 @@
       "metadata" : {
         "label" : "orders",
         "slug" : "orders",
-        "x" : -620,
-        "y" : 0,
+        "x" : -700,
+        "y" : -20,
         "phase" : 0
       },
       "properties" : {
@@ -87,7 +89,7 @@
       "metadata" : {
         "label" : "Aggregate_1",
         "slug" : "Aggregate_1",
-        "x" : -340,
+        "x" : -360,
         "y" : 0,
         "phase" : 0,
         "macroDependencies" : [ ],
@@ -122,6 +124,49 @@
         "isCustomOutputSchema" : false,
         "autoUpdateOnRun" : false
       }
+    },
+    "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3" : {
+      "id" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "aggregate_total_price",
+        "slug" : "aggregate_total_price",
+        "x" : -160,
+        "y" : -120,
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "Summarizes total price while incorporating a specific parameter for further analysis.",
+        "autoUpdateComment" : true,
+        "isLabelGrayed" : false
+      },
+      "properties" : {
+        "columnsSelector" : [ "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b##o_totalprice" ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "o_totalprice"
+          },
+          "alias" : "o_totalprice",
+          "_row_id" : "355179205"
+        }, {
+          "expression" : {
+            "expression" : "'{{var(\"param_a\")}}'"
+          },
+          "alias" : "o_param_a",
+          "_row_id" : "EODrysO6bM"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "GTUZcX5x5l9BQpno3norN$$sXukEJpmjCtl9XuKxN_Dz",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
     }
   },
   "connections" : [ {
@@ -131,9 +176,15 @@
     "target" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
     "targetPort" : "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B"
   }, {
-    "id" : "VO85UIZ34FTuOiVR-N8Gz",
+    "id" : "IQsKdoIux29eTQ4w-g1Le",
     "source" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
     "sourcePort" : "w8UXSlL6v9S8DESw4IXgo$$N860-o8noF1Jxzt6NGjBY",
+    "target" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
+    "targetPort" : "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b"
+  }, {
+    "id" : "XIByhPBbleEU9jnPD9wXn$$vvFJjHhWxOkA_QNVR_rd2",
+    "source" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
+    "sourcePort" : "GTUZcX5x5l9BQpno3norN$$sXukEJpmjCtl9XuKxN_Dz",
     "target" : "aggregate_orders##zkP7Bhbf",
     "targetPort" : "DTFCRJCD"
   } ],

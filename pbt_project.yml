@@ -33,6 +33,9 @@ sqlModels:
       - name: o_totalprice
         dataType:
           type: Decimal
+      - name: o_param_a
+        dataType:
+          type: String
     description: null
     author: nimbus+demo@prophecy.io
     files:

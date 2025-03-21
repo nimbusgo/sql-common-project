@@ -413,6 +413,10 @@
     "dependencies" : { },
     "prophecyProjectDependencies" : { }
   },
-  "entitiesToSync" : [ ],
+  "entitiesToSync" : [ {
+    "name" : "aggregate_orders",
+    "type" : "Model",
+    "syncedOnce" : true
+  } ],
   "frontEndLanguage" : "sql"
 }
