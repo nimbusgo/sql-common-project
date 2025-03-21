@@ -36,6 +36,9 @@ sqlModels:
       - name: o_param_a
         dataType:
           type: String
+      - name: o_orderstatus
+        dataType:
+          type: String
     description: null
     author: nimbus+demo@prophecy.io
     files:

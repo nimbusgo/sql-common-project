@@ -13,14 +13,45 @@
         "type" : "ModelConfig"
       },
       "userDefinedConfig" : {
-        "vars" : {
-          "param_a" : "\"def\""
-        }
+        "vars" : { }
       }
     },
     "version" : 3
   },
   "processes" : {
+    "j2CdIEK7h4EefmqDj5eut$$c8V8qVyanaQ5H5G7CHXDh" : {
+      "id" : "j2CdIEK7h4EefmqDj5eut$$c8V8qVyanaQ5H5G7CHXDh",
+      "component" : "Filter",
+      "metadata" : {
+        "label" : "filtered_orders_by_status",
+        "slug" : "filtered_orders_by_status",
+        "x" : 20,
+        "y" : -40,
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "Filters orders based on a specific status for targeted analysis.",
+        "autoUpdateComment" : true,
+        "isLabelGrayed" : false
+      },
+      "properties" : {
+        "columnsSelector" : [ "hlCHeKO1jax_89bENvNf4$$hUpM6LUIx7lXXozOiDbWv##o_orderstatus" ],
+        "condition" : {
+          "expression" : "o_orderstatus = '{{var(\"order_status\")}}'"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "hlCHeKO1jax_89bENvNf4$$hUpM6LUIx7lXXozOiDbWv",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "27qRaBXZ9IvxkfwiQpac5$$lgiwm6OWCO37nX_9SFMGk",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
     "aggregate_orders##zkP7Bhbf" : {
       "id" : "aggregate_orders##zkP7Bhbf",
       "component" : "TargetModel",
@@ -35,7 +66,7 @@
         "customQueryDisabled" : true,
         "customQuery" : false,
         "incrementalEditorDisabled" : true,
-        "query" : "SELECT * \n\nFROM aggregate_total_price\n",
+        "query" : "SELECT * \n\nFROM filtered_orders_by_status\n",
         "incrementalKey" : false,
         "incremental" : {
           "expression" : "true"
@@ -44,7 +75,7 @@
       "ports" : {
         "inputs" : [ {
           "id" : "DTFCRJCD",
-          "slug" : "aggregate_total_price"
+          "slug" : "filtered_orders_by_status"
         } ],
         "outputs" : [ {
           "id" : "WkOeeAKl",
@@ -60,7 +91,7 @@
       "metadata" : {
         "label" : "orders",
         "slug" : "orders",
-        "x" : -700,
+        "x" : -1060,
         "y" : -20,
         "phase" : 0
       },
@@ -83,64 +114,22 @@
         "autoUpdateOnRun" : false
       }
     },
-    "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH" : {
-      "id" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
-      "component" : "Aggregate",
-      "metadata" : {
-        "label" : "Aggregate_1",
-        "slug" : "Aggregate_1",
-        "x" : -360,
-        "y" : 0,
-        "phase" : 0,
-        "macroDependencies" : [ ],
-        "comment" : "Calculates the total revenue generated from all orders.",
-        "autoUpdateComment" : true
-      },
-      "properties" : {
-        "aggregate" : [ {
-          "expression" : {
-            "expression" : "sum(o_totalprice)"
-          },
-          "alias" : "o_totalprice",
-          "_row_id" : "343437499"
-        } ],
-        "allowSelection" : true,
-        "condition" : {
-          "expression" : ""
-        },
-        "activeTab" : "aggregate",
-        "columnsSelector" : [ "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B##o_totalprice" ],
-        "groupBy" : [ ]
-      },
-      "ports" : {
-        "inputs" : [ {
-          "id" : "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B",
-          "slug" : "in0"
-        } ],
-        "outputs" : [ {
-          "id" : "w8UXSlL6v9S8DESw4IXgo$$N860-o8noF1Jxzt6NGjBY",
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false,
-        "autoUpdateOnRun" : false
-      }
-    },
     "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3" : {
       "id" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
       "component" : "Reformat",
       "metadata" : {
         "label" : "aggregate_total_price",
         "slug" : "aggregate_total_price",
-        "x" : -160,
+        "x" : -260,
         "y" : -120,
         "phase" : 0,
         "macroDependencies" : [ ],
-        "comment" : "Summarizes total price while incorporating a specific parameter for further analysis.",
+        "comment" : "Summarizes total prices along with additional parameters and order statuses.",
         "autoUpdateComment" : true,
         "isLabelGrayed" : false
       },
       "properties" : {
-        "columnsSelector" : [ "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b##o_totalprice" ],
+        "columnsSelector" : [ "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b##o_totalprice", "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b##o_orderstatus" ],
         "expressions" : [ {
           "expression" : {
             "expression" : "o_totalprice"
@@ -153,6 +142,12 @@
           },
           "alias" : "o_param_a",
           "_row_id" : "EODrysO6bM"
+        }, {
+          "expression" : {
+            "expression" : "o_orderstatus"
+          },
+          "alias" : "o_orderstatus",
+          "_row_id" : "985163142"
         } ]
       },
       "ports" : {
@@ -162,6 +157,60 @@
         } ],
         "outputs" : [ {
           "id" : "GTUZcX5x5l9BQpno3norN$$sXukEJpmjCtl9XuKxN_Dz",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH" : {
+      "id" : "OiicmT3pwZHOe1wLc3sq2$$qTAlR2V8X9geZcELDHqIH",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "Aggregate_1",
+        "slug" : "Aggregate_1",
+        "x" : -540,
+        "y" : 0,
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "Calculates total sales by order status to assess performance.",
+        "autoUpdateComment" : true
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "sum(o_totalprice)"
+          },
+          "alias" : "o_totalprice",
+          "_row_id" : "343437499"
+        }, {
+          "expression" : {
+            "expression" : "any_value(o_orderstatus)"
+          },
+          "alias" : "o_orderstatus",
+          "_row_id" : "668509713"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B##o_orderstatus", "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B##o_totalprice" ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "o_orderstatus"
+          },
+          "alias" : "",
+          "_row_id" : "6kaHlX9ulb"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "wHeqWA87HLFVtvj97GIoK$$tByJnhXWgs7VtadPuMZ4B",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "w8UXSlL6v9S8DESw4IXgo$$N860-o8noF1Jxzt6NGjBY",
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false,
@@ -182,9 +231,15 @@
     "target" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
     "targetPort" : "Z6evS-hG5zIjJaJ9YG0vI$$NlioF6A2oXnWYNWJfAs2b"
   }, {
-    "id" : "XIByhPBbleEU9jnPD9wXn$$vvFJjHhWxOkA_QNVR_rd2",
+    "id" : "c42hI--koUsD4Epf5RSq0",
     "source" : "TKIRG9KlbdNTZo2z4HZnp$$wpCIyNokvoZnukqIWYqQ3",
     "sourcePort" : "GTUZcX5x5l9BQpno3norN$$sXukEJpmjCtl9XuKxN_Dz",
+    "target" : "j2CdIEK7h4EefmqDj5eut$$c8V8qVyanaQ5H5G7CHXDh",
+    "targetPort" : "hlCHeKO1jax_89bENvNf4$$hUpM6LUIx7lXXozOiDbWv"
+  }, {
+    "id" : "KlxEBzgpVgb2I8N4QddXd$$ReeUq6iFc6LjTDDfcQXQ3",
+    "source" : "j2CdIEK7h4EefmqDj5eut$$c8V8qVyanaQ5H5G7CHXDh",
+    "sourcePort" : "27qRaBXZ9IvxkfwiQpac5$$lgiwm6OWCO37nX_9SFMGk",
     "target" : "aggregate_orders##zkP7Bhbf",
     "targetPort" : "DTFCRJCD"
   } ],

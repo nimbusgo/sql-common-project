@@ -29,6 +29,7 @@ target-path: "target"
 # Variable Configs
 # ==================
 vars:
+  order_status: "O"
   param_a: "abc"
 
 # ============
